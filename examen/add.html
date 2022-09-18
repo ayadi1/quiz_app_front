@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/bootstrap.min.css" />
+    <title>ajouter un examen</title>
+  </head>
+  <body>
+    <iframe src="../navBar/navBar.html" class="w-100" frameborder="0"></iframe>
+    <div class="container">
+      <h1>ajouter</h1>
+      <div class="groupQuestionResponse">
+        <div
+          class="addQuestionAnswer w-50 m-auto border p-3 position-relative mt-5"
+        >
+          <span
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+          >
+            X
+          </span>
+
+          <div class="Question border p-2">
+            <div class="mb-3">
+              <label for="exampleInput" class="form-label">Question</label>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="écris la question"
+              />
+              <div class="btn btn-primary mt-3 w-100">ajouter un question</div>
+            </div>
+          </div>
+          <div class="reponse mt-3 border p-3">
+            <h4>list des reponse</h4>
+            <div class="reponseExemple">
+              <div class="reponseItem d-flex justify-content-between mb-3">
+                <div class="input-group">
+                  <div class="input-group-text">
+                    <input
+                      class="form-check-input mt-0"
+                      type="checkbox"
+                      value=""
+                      aria-label="Radio button for following text input"
+                    />
+                  </div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    aria-label="Text input with radio button"
+                    placeholder="écris la reponse"
+                  />
+                </div>
+                <button class="btn btn-outline-danger deleteReponse">X</button>
+              </div>
+            </div>
+          </div>
+          <div class="btn btn-primary mt-3 w-100 addReponse">+</div>
+        </div>
+      </div>
+
+      <div class="btn btn-primary m-auto addGroupQuestionResponse">
+        ajouter un question
+      </div>
+    </div>
+    <script src="../assets/bootstrap.bundle.min.js"></script>
+    <script src="../assets/jquery.min.js"></script>
+    <script>
+      const reponseExample = $(".reponseExemple").html();
+      const groupQuestionResponse = $(".groupQuestionResponse").html();
+      // add reponse
+      handelDeleteResponseInput();
+      handelClickAddResponse();
+      function handelClickAddResponse() {
+        $(".addReponse").click(function () {
+          $(this).parent().children('.reponse').append(reponseExample);
+          handelDeleteResponseInput();
+        });
+      }
+      // delete response
+      function handelDeleteResponseInput() {
+        $(".deleteReponse").click(function () {
+          if (this) $(this).parent().remove();
+        });
+      }
+      // add group Question Response
+      $(".addGroupQuestionResponse").click(() => {
+        $(".groupQuestionResponse").append(groupQuestionResponse);
+        handelClickAddResponse();
+      });
+    </script>
+  </body>
+</html>
